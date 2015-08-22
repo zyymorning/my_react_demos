@@ -6,6 +6,7 @@
   </head>
   <body>
     <div id="example"></div>
+    <div id="testid"></div>
     <script type="text/jsx">
 var LikeButton = React.createClass({
   getInitialState: function() {
@@ -28,7 +29,61 @@ React.render(
   <LikeButton />,
   document.getElementById('example')
 );
+
+
+var MyLikeButton = React.createClass({
+  getInitialState: function() {
+    return {liked: false};
+  },
+  handleClick: function(event) {
+    this.setState({liked: !this.state.liked});
+  },
+  render: function(){
+    var text = this.state.liked? 'like':'haven\'t like';
+    return (
+      <p onClick={this.handleClick}>
+        You {text} this. For YYZ.
+      </p>
+    );
+  }
+});
+
+React.render(
+  <MyLikeButton />,
+  document.getElementById("testid")
+);
     </script>
   </body>
 </html>
+
+<!--
+上面代码是一个 LikeButton 组件，它的 getInitialState 方法用于定义初始状态，也就是一个对象，这个对象可以通过 this.state 属性读取。当用户点击组件，导致状态变化，this.setState 方法就修改状态值，每次修改以后，自动调用 this.render 方法，再次渲染组件。
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

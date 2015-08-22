@@ -6,8 +6,10 @@
   </head>
   <body>
     <div id="example"></div>
+    <div id="testid"></div>
     <script type="text/jsx">
       var names = ['Alice', 'Emily', 'Kate'];
+      var ages = [2, 4, 5];
 
       React.render(
         <div>
@@ -19,6 +21,31 @@
         </div>,
         document.getElementById('example')
       );
+
+      React.render(
+        <div>
+        {
+          ages.map(function (age){
+            return <div> How Old? {age}!</div>
+          })
+        }
+        </div>,
+        document.getElementById('testid')
+      );
     </script>
   </body>
 </html>
+
+<!--
+  1. html和js混用
+    遇到<>标签就按html解析，遇到{}大括号就按js语法解析
+    这里相当于一个被处理后的数组在一组<div>标签之中，然后渲染到页面对应的id中=example/testid
+  2. js中array的用法
+    map
+  3. 主语语法细节
+-->
+
+
+
+
+

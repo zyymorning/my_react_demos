@@ -5,6 +5,8 @@
     <script src="../build/JSXTransformer.js"></script>
   </head>
   <body>
+    <div id="example"></div>
+    <div id="testid"></div>
     <script type="text/jsx">
       var NotesList = React.createClass({
         render: function() {
@@ -20,14 +22,67 @@
         }
       });
 
+      var MyTestNode = React.createClass({
+        render: function(){
+          return (
+            <ul>
+            {
+              this.props.children.map(function(child){
+                return <li> This is my child: {child}</li>
+              })
+            }
+            </ul>
+          );
+        }
+      });
+
       React.render(
         <NotesList>
           <span>hello</span>
           <span>world</span>
         </NotesList>,
-        document.body
+        document.getElementById("example")
+      );
+
+      React.render(
+        <MyTestNode name="zyy">
+          <span> ch1 </span>
+          <span> ch2 </span>
+        </MyTestNode>,
+        document.getElementById("testid")
       );
     </script>
   </body>
 </html>
+
+
+
+<!--
+1. this.props 对象的属性与组件的属性一一对应，但是有一个例外，就是 this.props.children 属性。它表示组件的所有子节点
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -6,6 +6,8 @@
   </head>
   <body>
     <div id="example"></div>
+    <div id="testid"></div>
+    <div id="outputid"></div>
     <script type="text/jsx">
 var MyComponent = React.createClass({
   handleClick: function() {
@@ -25,6 +27,65 @@ React.render(
   <MyComponent />,
   document.getElementById('example')
 );
+
+
+var MyTestComp = React.createClass({
+  handler: function(){
+    React.findDOMNode(this.refs.myTestInput).focus();
+  },
+  render: function(){
+    return (
+      <div>
+        <input type="text" ref="myTestInput" />
+        <input type="button" value="Click" onClick={this.handler}/>
+      </div>
+    );
+  }
+});
+
+React.render(
+  <MyTestComp />,
+  document.getElementById("testid")
+);
     </script>
   </body>
 </html>
+
+
+<!--
+上面代码中，组件 MyComponent 的子节点有一个文本输入框，用于获取用户的输入。这时就必须获取真实的 DOM 节点，虚拟 DOM 是拿不到用户输入的。为了做到这一点，文本输入框必须有一个 ref 属性，然后 this.refs.[refName] 就指向这个虚拟 DOM 的子节点，最后通过 React.findDOMNode 方法获取真实 DOM 的节点。
+All events references:http://facebook.github.io/react/docs/events.html#supported-events
+
+
+这个例子：
+Component里的render输出一个form，用户点击button会触发一个handler，handler会找到已经渲染出的dom(通过findDOMNode和this.refs.***)，然后focus。
+
+
+对于Job Queue：
+可以分很多components，有的component负责filter的可以采用类似的机制。
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

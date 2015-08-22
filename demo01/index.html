@@ -6,11 +6,21 @@
   </head>
   <body>
     <div id="example"></div>
+    <div id="testid"></div>
     <script type="text/jsx">
       React.render(
         <h1>Hello, world!</h1>,
         document.getElementById('example')
       );
+
+      React.render(
+        <h1> Zyy </h1>,
+        document.getElementById('testid')
+        );
     </script>
   </body>
 </html>
+
+<!--
+用React.render()可以渲染页面，document那行会指明在那个id中渲染
+-->

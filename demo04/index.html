@@ -6,6 +6,7 @@
   </head>
   <body>
     <div id="example"></div>
+    <div id="testid"></div>
     <script type="text/jsx">
       var HelloMessage = React.createClass({
         render: function() {
@@ -17,6 +18,46 @@
         <HelloMessage name="John" />,
         document.getElementById('example')
       );
+
+      var MyTestMsg = React.createClass({
+        render: function(){
+          return <p>My msg here: {this.props.msg}</p>;
+        }
+      });
+
+      React.render(
+        <MyTestMsg msg="hehe"/>,
+        document.getElementById('testid')
+      );
     </script>
   </body>
 </html>
+
+
+<!--
+1. React可以用createClass建一个component，其中一定要有render方法，返回相应的要渲染的东西，可以用this.props.**获取参数
+2. 用<ComponentName parameter="**"/> 可以调用component并给它传入参数
+React 允许将代码封装成组件（component），然后像插入普通 HTML 标签一样，在网页中插入这个组件。React.createClass 方法就用于生成一个组件类
+上面代码中，变量 HelloMessage 就是一个组件类。模板插入 <HelloMessage /> 时，会自动生成 HelloMessage 的一个实例（下文的"组件"都指组件类的实例）。所有组件类都必须有自己的 render 方法，用于输出组件。
+上面代码中，变量 HelloMessage 就是一个组件类。模板插入 <HelloMessage /> 时，会自动生成 HelloMessage 的一个实例（下文的"组件"都指组件类的实例）。所有组件类都必须有自己的 render 方法，用于输出组件。
+
+对于Job Queue：
+可以传入data属性，然后在createClass的render里处理data，当然也可以有其他的辅助方法与render平行的。
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

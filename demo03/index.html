@@ -6,15 +6,30 @@
   </head>
   <body>
     <div id="example"></div>
+    <div id="testid"></div>
     <script type="text/jsx">
       var arr = [
         <h1>Hello world!</h1>,
         <h2>React is awesome</h2>,
       ];
+
+      var arr1 = [
+        <p> This is yy zhang</p>,
+      ];
+
       React.render(
         <div>{arr}</div>,
         document.getElementById('example')
       );
+
+      React.render(
+        <div>{arr1}</div>,
+        document.getElementById('testid')
+      );
     </script>
   </body>
 </html>
+
+<!--
+1. 这里其实和demo2类似，最后都是把一个array渲染到页面中，只不过这里的array时自己定义的，而且array中每个元素还还有html标签。
+-->
